@@ -1,0 +1,10 @@
+﻿using InterviewProject.Controllers.Responses;
+using System.Collections.Generic;
+
+namespace InterviewProject.Controllers.Models.Responses
+{
+    public class ErrorResponse
+    {
+        public List<ErrorModel> Errors { get; set; } = new List<ErrorModel>();
+    }
+}

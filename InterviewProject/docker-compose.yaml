@@ -1,0 +1,25 @@
+﻿version: '3.1'
+services:
+    mysql-db:
+        image: mysql:latest
+        ports:
+            - 3306:3306
+        volumes:
+            - "./.mysql-data/db:/var/lib/mysql"
+        environment:
+            - MYSQL_USER=user
+            - MYSQL_DATABASE=interviewdb
+            - MYSQL_ROOT_PASSWORD=root 
+            - MYSQL_PASSWORD=pass
+    
+    interviewproject-api:
+        build: .
+        ports:
+            - "3000:80"
+            - "3001:443"
+        environment:
+            - ASPNETCORE_ENVIRONMENT=DockerDevelopment
+            - ConnectionString=server=mysql-db;port=3306;database=interviewdb;userid=user;password=pass;
+        restart: always
+        depends_on:
+            - mysql-db
