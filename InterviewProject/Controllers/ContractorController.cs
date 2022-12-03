@@ -4,6 +4,7 @@ using InterviewProject.Controllers.Models.Responses;
 using InterviewProject.Services.Abstractions;
 using InterviewProject.Services.Models;
 using InterviewProject.Shared.Exceptions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace InterviewProject.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ContractorController : ControllerBase
     {
         private readonly IMemberService<BusinessContractor> contractorService;

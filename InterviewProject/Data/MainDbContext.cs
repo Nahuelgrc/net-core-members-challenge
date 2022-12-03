@@ -1,5 +1,6 @@
 ﻿using InterviewProject.Data.Models;
 using InterviewProject.Shared;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace InterviewProject.Data
 {
-    public class MainDbContext : DbContext
+    public class MainDbContext : IdentityDbContext<Auth>
     {
         public MainDbContext(DbContextOptions<MainDbContext> options)
             : base(options)

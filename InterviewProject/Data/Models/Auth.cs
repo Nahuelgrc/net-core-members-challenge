@@ -1,11 +1,12 @@
 ﻿using InterviewProject.Shared;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System.ComponentModel.DataAnnotations;
 
 namespace InterviewProject.Data.Models
 {
-    public class Auth
+    public class Auth : IdentityUser
     {
         [Key]
         public int Id { get; set; }

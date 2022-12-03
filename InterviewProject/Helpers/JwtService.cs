@@ -37,5 +37,19 @@ namespace InterviewProject.Helpers
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+        public JwtSecurityToken Verify(string jwt)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(secretKey);
+            tokenHandler.ValidateToken(jwt, new TokenValidationParameters {
+                IssuerSigningKey = new SymmetricSecurityKey(key),
+                ValidateIssuerSigningKey = true,
+                ValidateIssuer = false,
+                ValidateAudience = false
+            }, out SecurityToken validatedToken);
+
+            return (JwtSecurityToken) validatedToken;
+        }
     }
 }
